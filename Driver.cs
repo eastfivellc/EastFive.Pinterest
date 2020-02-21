@@ -44,6 +44,7 @@ namespace EastFive.Pinterest
                     try
                     {
                         var boardData = JsonConvert.DeserializeObject<BoardInitialData>(jsonContent);
+                        var boardName = boardData.routeData.name;
                         var allPins = boardData.resourceResponses
                             .Select(
                                 resourceResponse =>
