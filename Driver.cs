@@ -94,6 +94,71 @@ namespace EastFive.Pinterest
             }
         }
 
+        public static async Task<TResult> DownloadPin<TResult>(string pinId,
+            Func<Pin, TResult> onSuccess,
+            Func<TResult> onNotFound = default,
+            Func<string, TResult> onCouldNotConnect = default,
+            Func<string, TResult> onFailure = default)
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var boardUrl = new Uri($"https://www.pinterest.com/pin/{pinId}/");
+
+                var request = new HttpRequestMessage(HttpMethod.Get, boardUrl);
+                try
+                {
+                    var response = await httpClient.SendAsync(request);
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                            return onNotFound();
+                        return onFailure(content);
+                    }
+
+                    var doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(content);
+                    var scripteDataNode = doc.DocumentNode.SelectSingleNode("//script[@id='initial-state']");
+                    var jsonContent = scripteDataNode.InnerText;
+
+                    try
+                    {
+                        var boardData = JsonConvert.DeserializeObject<BoardInitialData>(jsonContent);
+                        var boardName = boardData.routeData.name;
+                        return boardData.resourceResponses
+                            .Where(resourceResponse => resourceResponse.name == "PinResource")
+                            .First(
+                                (resourceResponse, next) =>
+                                {
+                                    var pinObject = resourceResponse.response.data as JObject;
+                                    try
+                                    {
+                                        var pinCast = pinObject.ToObject<Pin>();
+                                        return onSuccess(pinCast);
+                                    }
+                                    catch (JsonReaderException ex)
+                                    {
+                                        return onFailure(ex.Message);
+                                    }
+                                },
+                                () => onFailure("No pins found"));
+                    }
+                    catch (Newtonsoft.Json.JsonReaderException)
+                    {
+                        return onCouldNotConnect($"Pinterest returned non-json response:{content}");
+                    }
+                }
+                catch (System.Net.Http.HttpRequestException ex)
+                {
+                    return onCouldNotConnect($"{ex.GetType().FullName}:{ex.Message}");
+                }
+                catch (Exception exGeneral)
+                {
+                    return onCouldNotConnect(exGeneral.Message);
+                }
+            }
+        }
+
         public static async Task<TResult> ListBoardsAsync<TResult>(string username,
             Func<UserProfileBoardResource[], TResult> onFound,
             Func<TResult> onNotFound = default,
