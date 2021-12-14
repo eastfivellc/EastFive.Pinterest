@@ -1,0 +1,121 @@
+﻿{
+  "boards": {
+    "content": {},
+    "deleting": {},
+    "fetching": {},
+    "fetchAllComplete": false,
+    "lastPinnedTo": null,
+    "isSocialSeasonalBoard": false
+  },
+  "euCookieBar": { "isShowEUCookieBar": false },
+  "experiences": {
+    "anchorExperiences": {},
+    "eligibleExperiences": {},
+    "experiencesMulti": {},
+    "isFetchingAll": false,
+    "isFetchingAllMulti": false,
+    "mountedPlacements": {}
+  },
+  "facebookAutoLogin": { "facebookAutoLoginStatus": "null" },
+  "feeds": {
+    "aggregatedComments": {},
+    "boardActivityItems": {},
+    "boardActivityComments": {},
+    "boardPins": {},
+    "boardSections": {},
+    "homefeedMoreIdeasTabs": {},
+    "profileBoards": {},
+    "searchPins": {},
+    "sectionPins": {},
+    "storyPinData": {},
+    "todayArticleInterestFeed": {},
+    "todayTabFeed": {},
+    "unifiedComments": {},
+    "userDidItData": {}
+  },
+  "form": {},
+  "googleOneTap": {
+    "googleOneTapFail": false,
+    "googleOneTapInitialized": false
+  },
+  "history": {
+    "previous": [],
+    "current": null,
+    "forward": []
+  },
+  "location": {
+    "history": [ { "pathname": "/search/pins/?q=Pink%20panther" } ],
+    "pathname": "/search/pins/?q=Pink%20panther"
+  },
+  "loggedOutUserInfo": { "userInfo": null },
+  "pins": {},
+  "resources": {
+    "fetching": {},
+    "data": {}
+  },
+  "stories": {},
+  "storyCloseupExpand": { "offset": 0 },
+  "todayarticles": {},
+  "topics": {},
+  "users": {},
+  "ui": {
+    "app": {
+      "appInFocus": true,
+      "videosAutoplaying": {
+        "organicVideosAutoplaying": {},
+        "promotedVideosAutoplaying": {}
+      },
+      "isAutoplay": false,
+      "showTypeaheadOverlay": false
+    },
+    "contentSafetyModal": { "contentSafetyModalViewed": false },
+    "conversations": {
+      "chatheads": [],
+      "open": null,
+      "feedback": null
+    },
+    "mainComponent": {
+      "initial": null,
+      "current": null,
+      "locationToErrorMap": {}
+    },
+    "visualLinks": { "selectedPinTagKey": null }
+  },
+  "viewer": {
+    "isAuth": false,
+    "isLimitedLogin": false
+  },
+  "inviteObject": {
+    "invite": {},
+    "loadedState": "Unloaded"
+  },
+  "pinbuilder": {
+    "assets": [],
+    "createdPinIds": [],
+    "fonts": [],
+    "layoutMode": 0,
+    "pinDraftIds": [],
+    "pinDraftIdUploadStatusMap": {},
+    "pinDrafts": {},
+    "pinItems": {},
+    "pinTags": {},
+    "selectedPinDraftIds": [],
+    "storyPinItemBlocks": {},
+    "storyPinItems": {},
+    "taggedObjects": {},
+    "isBatchEditMode": false,
+    "batchEditModeFields": {
+      "dirtyFields": [],
+      "description": "",
+      "link": "",
+      "title": "",
+      "board": null,
+      "descriptionError": null,
+      "linkError": null,
+      "titleError": null
+    },
+    "entryPoint": null,
+    "closeupImageSignature": null,
+    "pinEditorPinDraft": null
+  }
+}
